@@ -1,0 +1,68 @@
+.header {
+    margin-top: 55px;
+    margin-left: 260px;
+}
+
+.l {
+    display: flex; 
+}
+
+.search {
+    margin-top: 40px;
+}
+
+.search input{
+    width: 234px;
+    padding: 0 42px 5px 25px;
+    border: none;
+    font-size: 23.16px;
+    border-bottom: 1px solid black;
+}
+
+.search input:focus {
+    outline: none;
+}
+
+.search button {
+    border: none;
+    height: 31.25px;
+    width: 25px;
+}
+
+.logo {
+    margin-left: 250px;
+    height: 162px;
+    width: 579.91px;
+}
+
+.icons_login {
+    width: 46.4px;
+    height: 46.6px;
+    margin-left: 160px;
+    margin-top: 20px;
+}
+
+.icons_basket {
+    width: 46.4px;
+    height: 46.6px;
+    margin-left: 55px;
+    margin-top: 30px;
+}
+
+.navbar {
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    width: 1400px;
+    padding:7px 7px;
+    margin-top: -30px;
+    
+}
+
+.pages {
+    margin-left: 124px;
+    margin-right: 124px;
+    font-size: 24px;
+    text-decoration: none;
+    color: black;
+}
+
