@@ -1,6 +1,7 @@
 .header {
-    margin-top: 55px;
+    margin-top: 57px;
     margin-left: 260px;
+    margin-bottom: 90px;
 }
 
 .l {
@@ -38,14 +39,14 @@
 .icons_login {
     width: 46.4px;
     height: 46.6px;
-    margin-left: 160px;
-    margin-top: 20px;
+    margin-left: 180px;
+    margin-top: 30px;
 }
 
 .icons_basket {
     width: 46.4px;
     height: 46.6px;
-    margin-left: 55px;
+    margin-left: 35px;
     margin-top: 30px;
 }
 

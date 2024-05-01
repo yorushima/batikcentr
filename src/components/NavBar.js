@@ -5,7 +5,7 @@ import { ABOUT_ROUTE, BASKET_ROUTE, BRANDS_ROUTE, CONTACTS_ROUTE, PRODUCT_ROUTE,
 import SEARCH from '../img/search.jpg';
 import LOGO from '../img/batikcentr.svg';
 import BASKET from '../img/basket.svg';
-import PROFILE from '../img/profile.png' 
+import PROFILE from '../img/profile.svg' 
 
 import styles from '../styles/navbar.module.css';
 
