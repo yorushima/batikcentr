@@ -5,13 +5,35 @@
     margin: auto;
 }
 
-.main-text{
-
-}
-
 .why_us_head{
     font-size: 47.38px;
     font-weight: bold;
     text-align: center;
     margin-top: 90px;
 }
+
+.why_us {
+    /* margin-left: 343.55px; */
+    margin-top: 55px;
+}
+.why_us_columns {
+    width: 33.3%;
+    float: left;
+    text-align: center;
+}
+
+.why_us_columns img{
+    width: 165.93px;
+    height: 165.93px;
+    border-radius: 50%;
+    margin-bottom: 15px;
+}
+
+.why_us_columns p{
+    padding-top: 13px;
+    margin: auto;
+    font-size: 28.43px;
+    width: 284.31px;
+    line-height: 35px;
+}
+
