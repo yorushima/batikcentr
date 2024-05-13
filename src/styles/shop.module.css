@@ -5,7 +5,7 @@
     margin: auto;
 }
 
-.why_us_head{
+.head{
     font-size: 47.38px;
     font-weight: bold;
     text-align: center;
@@ -37,3 +37,37 @@
     line-height: 35px;
 }
 
+.courses {
+    text-align: center;
+    position: relative;
+}
+
+.courses img {
+    width: 1660px;
+    height: 788px;
+    margin-top: 30px;
+}
+
+.courses button {
+    position: absolute;
+    top: 85%;
+    right: 2%;
+    transform: translate(-45%, -40%);
+    /* -ms-transform: translate(-50%, -50%); */
+    background-color: #555;
+    color: rgb(0, 0, 0);
+    font-size: 24px;
+    padding-left: 26px;
+    border: none;
+    cursor: pointer;
+    border-radius: 35px;
+    width: 402px;
+    height: 88px;
+    line-height: 30px;
+    text-align: left;
+    font-weight: 700;
+}
+
+.courses button:hover {
+    background-color: rgb(48, 48, 48);
+}
