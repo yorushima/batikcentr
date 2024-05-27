@@ -56,7 +56,6 @@ const Shop = () => {
       <div className={styles.popular}>
         <h2 className={styles.head}>Популярные товары</h2>
         <div className={styles.popular_columns}>
-          {/* <img src={IMAGE} alt='///' /> */}
           {/* Написать популярные товары */}
         </div>
       </div>
@@ -87,15 +86,6 @@ const Shop = () => {
             <div>
               <h3><img src={IMAGE} alt='5' /></h3>
             </div>
-            {/* <div>
-              <h3>7</h3>
-            </div>
-            <div>
-              <h3>8</h3>
-            </div>
-            <div>
-              <h3>9</h3>
-            </div> */}
           </Slider>
         </div>
         <button className={styles.button}>смотреть ещё</button>
