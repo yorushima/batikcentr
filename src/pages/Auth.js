@@ -3,7 +3,7 @@ import { useState } from "react";
 
 import { REGISTRATION_ROUTE } from "../utilis/consts";
 
-
+import styles from '../styles/auth.module.css';
 
 const Auth = () => {
     // Поля для регистрации 
@@ -44,20 +44,6 @@ const Auth = () => {
         } 
     }; 
   
-    // Отображение сообщения об успешном завершении 
-    const successMessage = () => { 
-        return ( 
-            <div 
-                className="success"
-                style={{ 
-                    display: submitted ? "" : "none", 
-                }} 
-            > 
-                <p>Пользователь {name} успешно зарегистрирован!</p> 
-            </div> 
-        ); 
-    }; 
-  
     // Отображение сообщения об ошибке, если ошибка является истинной 
     const errorMessage = () => { 
         return ( 
@@ -78,14 +64,13 @@ const Auth = () => {
                 <h1>Авторизация</h1> 
             </div> 
   
-            {/* Calling to the methods */} 
+            {/* Вызов сообщений */} 
             <div className="messages"> 
                 {errorMessage()} 
-                {successMessage()} 
+                {/* {successMessage()}  */}
             </div> 
   
             <form> 
-                {/* Labels and inputs for form data */} 
                 <label className="label"></label> 
                 <input 
                     onChange={handleName} 
