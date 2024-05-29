@@ -2,6 +2,7 @@ import Admin from "./pages/Admin";
 import Basket from "./pages/Basket";
 import Shop from "./pages/Shop";
 import Auth from "./pages/Auth";
+import Reg from "./pages/Registration";
 import ProductPage from "./pages/ProductPage";
 import { ABOUT_ROUTE, ADMIN_ROUTE, BASKET_ROUTE, BRANDS_ROUTE, CONTACTS_ROUTE, LOGIN_ROUTE, PRODUCT_ROUTE, REGISTRATION_ROUTE, SHOP_ROUTE } from "./utilis/consts"
 import About from "./pages/About";
@@ -26,11 +27,11 @@ export const publicRoutes = [ // Для неавторизованных пол�
     },
     {
         path: LOGIN_ROUTE,
-        Component: Auth
+        Component: Auth 
     },    
     {
         path: REGISTRATION_ROUTE,
-        Component: Auth
+        Component: Reg 
     },
     {
         path: PRODUCT_ROUTE + '/:id',

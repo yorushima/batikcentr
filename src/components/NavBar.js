@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { Context } from '../index';
-import { ABOUT_ROUTE, BASKET_ROUTE, BRANDS_ROUTE, CONTACTS_ROUTE, PRODUCT_ROUTE, REGISTRATION_ROUTE, SHOP_ROUTE } from '../utilis/consts';
+import { ABOUT_ROUTE, BASKET_ROUTE, BRANDS_ROUTE, CONTACTS_ROUTE, PRODUCT_ROUTE, LOGIN_ROUTE, SHOP_ROUTE } from '../utilis/consts';
 
 import SEARCH from '../img/search.jpg';
 import LOGO from '../img/batikcentr.svg';
@@ -20,7 +20,7 @@ const NavBar = () => {
             <input type="text" placeholder="что-то ищете?" />
             </form>
           <a className={styles.logo} href={SHOP_ROUTE}><img src={LOGO}></img></a>
-          <a className={styles.icons_login} href={REGISTRATION_ROUTE}><img src={PROFILE}></img></a>
+          <a className={styles.icons_login} href={LOGIN_ROUTE}><img src={PROFILE}></img></a>
           <a className={styles.icons_basket} href={BASKET_ROUTE}><img src={BASKET}></img></a>
         </div>
         <div className={styles.navbar}>
