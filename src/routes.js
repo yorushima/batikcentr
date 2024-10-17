@@ -4,10 +4,11 @@ import Shop from "./pages/Shop";
 import Auth from "./pages/Auth";
 import Reg from "./pages/Registration";
 import ProductPage from "./pages/ProductPage";
-import { ABOUT_ROUTE, ADMIN_ROUTE, BASKET_ROUTE, BRANDS_ROUTE, CONTACTS_ROUTE, LOGIN_ROUTE, PRODUCT_ROUTE, REGISTRATION_ROUTE, SHOP_ROUTE } from "./utilis/consts"
+import { CATALOG_ROUTE, ABOUT_ROUTE, ADMIN_ROUTE, BASKET_ROUTE, BRANDS_ROUTE, CONTACTS_ROUTE, LOGIN_ROUTE, PRODUCT_ROUTE, REGISTRATION_ROUTE, SHOP_ROUTE } from "./utilis/consts"
 import About from "./pages/About";
 import Brands from "./pages/Brands";
 import Contacts from "./pages/Contacts";
+import Catalog from "./pages/Catalog";
 
 export const authRoutes = [ // Для авторизованных пользователей
     {
@@ -42,11 +43,19 @@ export const publicRoutes = [ // Для неавторизованных пол�
         Component: About
     },
     {
+        path: CATALOG_ROUTE,
+        Component: Catalog
+    },
+    {
         path: BRANDS_ROUTE,
         Component: Brands
     },
     {
         path: CONTACTS_ROUTE,
         Component: Contacts
+    },
+    {
+        path: BASKET_ROUTE,
+        Component: Auth
     },
 ]

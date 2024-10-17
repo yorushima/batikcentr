@@ -12,13 +12,11 @@ const Auth = () => {
     const [password, setPassword] = useState(""); 
   
     // Поля для проверки ошибки 
-    const [submitted, setSubmitted] = useState(false); 
     const [error, setError] = useState(false); 
   
     // Обработка изменения имени 
     const handleName = (e) => { 
         setName(e.target.value); 
-        setSubmitted(false); 
     }; 
   
     // Обработка изменения почты 
@@ -30,7 +28,6 @@ const Auth = () => {
     // Обработка изменения пароля
     const handlePassword = (e) => { 
         setPassword(e.target.value); 
-        setSubmitted(false); 
     }; 
   
     // Обработка отправки формы 
@@ -39,7 +36,6 @@ const Auth = () => {
         if (name === "" || /*email === "" || */ password === "") { 
             setError(true); 
         } else { 
-            setSubmitted(true); 
             setError(false); 
         } 
     }; 
@@ -48,57 +44,64 @@ const Auth = () => {
     const errorMessage = () => { 
         return ( 
             <div 
-                className="error"
+                className={styles.error}
                 style={{ 
                     display: error ? "" : "none", 
                 }} 
             > 
                 <p>Пожалуйста, заполните все поля</p> 
-            </div> 
+            </div>
         ); 
     }; 
-  
+
     return ( 
-        <div className="form"> 
+        <div className={styles.form}> 
             <div> 
                 <h1>Авторизация</h1> 
             </div> 
   
             {/* Вызов сообщений */} 
-            <div className="messages"> 
+            <div className={styles.messages}> 
                 {errorMessage()} 
                 {/* {successMessage()}  */}
             </div> 
   
             <form> 
-                <label className="label"></label> 
+                <label className={styles.label}></label> 
                 <input 
                     onChange={handleName} 
-                    className="input"
+                    className={styles.input}
                     value={name} 
                     type="text"
                     placeholder='Логин'
                 /> 
   
-                {/* <label className="label"></label> 
+                {/* <label className={styles.label}></label> 
                 <input 
                     onChange={handleEmail} 
-                    className="input"
+                    className={styles.input}
                     value={email} 
                     type="email"
                     placeholder='Почта'
                 />  */}
   
-                <label className="label"></label> 
+                <label className={styles.label}></label> 
                 <input 
                     onChange={handlePassword} 
-                    className="input"
+                    className={styles.input}
                     value={password} 
                     type="password"
                     placeholder='Пароль'
                 /> 
-  
-                <button onClick={handleSubmit} className="btn" type="submit"> 
+
+                <label className={styles.label}>
+                    <input type="checkbox" />
+                    <span class={styles.checkmark}></span>
+                    Запомните меня
+                </label>
+                <a>Забыли пароль?</a>
+
+                <button onClick={handleSubmit} className={styles.button} type="submit"> 
                     Вход 
                 </button> 
                 <p>Нет аккаунта? <a href={REGISTRATION_ROUTE}>Регистрация</a></p>

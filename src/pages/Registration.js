@@ -1,8 +1,6 @@
 import React from 'react';
 import { useState } from "react";
 
-import { REGISTRATION_ROUTE } from "../utilis/consts";
-
 import styles from '../styles/auth.module.css';
 
 
@@ -49,7 +47,7 @@ const Registration = () => {
     const successMessage = () => { 
         return ( 
             <div 
-                className="success"
+                className={styles.success}
                 style={{ 
                     display: submitted ? "" : "none", 
                 }} 
@@ -63,7 +61,7 @@ const Registration = () => {
     const errorMessage = () => { 
         return ( 
             <div 
-                className="error"
+                className={styles.error}
                 style={{ 
                     display: error ? "" : "none", 
                 }} 
@@ -74,53 +72,53 @@ const Registration = () => {
     }; 
   
     return ( 
-        <div className="form"> 
+        <div className={styles.form}> 
             <div> 
                 <h1>Регистрация</h1> 
             </div> 
   
             {/* Вызов сообщений */} 
-            <div className="messages"> 
+            <div className={styles.messages}> 
                 {errorMessage()} 
                 {successMessage()} 
             </div> 
   
             <form> 
-                <label className="label"></label> 
+                <label className={styles.label}></label> 
                 <input 
                     onChange={handleName} 
-                    className="input"
+                    className={styles.input}
                     value={name} 
                     type="text"
                     placeholder='Логин'
                 /> 
   
-                {/* <label className="label"></label> 
+                {/* <label className={styles.label}></label> 
                 <input 
                     onChange={handleEmail} 
-                    className="input"
+                    className={styles.input}
                     value={email} 
                     type="email"
                     placeholder='Почта'
                 />  */}
   
-                <label className="label"></label> 
+                <label className={styles.label}></label> 
                 <input 
                     onChange={handlePassword} 
-                    className="input"
+                    className={styles.input}
                     value={password} 
                     type="password"
                     placeholder='Пароль'
                 /> 
-                <label className="label"></label> 
+                <label className={styles.label}></label> 
                 <input 
                     onChange={handlePassword} 
-                    className="input"
+                    className={styles.input}
                     value={password} 
                     type="password"
                     placeholder='Повторите пароль'
                 /> 
-                <button onClick={handleSubmit} className="btn" type="submit"> Регистрация </button> 
+                <button onClick={handleSubmit} className={styles.button} type="submit"> Регистрация </button> 
             </form> 
         </div> 
     );
