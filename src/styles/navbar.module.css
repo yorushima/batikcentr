@@ -36,10 +36,17 @@
     width: 579.91px;
 }
 
+.icons_favourites {
+    width: 46.4px;
+    height: 46.6px;
+    margin-left: 80px;
+    margin-top: 30px;
+}
+
 .icons_login {
     width: 46.4px;
     height: 46.6px;
-    margin-left: 180px;
+    margin-left: 53px;
     margin-top: 30px;
 }
 
