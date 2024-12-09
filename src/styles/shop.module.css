@@ -72,23 +72,6 @@
     background-color: rgb(48, 48, 48);
 }
 
-.contacts {
-    text-align: center;
-    margin-bottom: 300px;
-}
-
-.contacts img {
-    width: 63px;
-    height: 63px;
-    margin-top: 60px;
-    margin-bottom: 15px;
-}
-
-.contacts p {
-    margin-top: 35px;
-    font-size: 32px;
-}
-
 .reviews {
     text-align: center;
     margin-left: 216px;

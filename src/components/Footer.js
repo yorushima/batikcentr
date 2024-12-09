@@ -26,16 +26,15 @@ const Footer = () => {
         <ul>
           <h3>О нас</h3>
           <li><a href={ABOUT_ROUTE}>О компании</a></li>
-          <li><a href='#'>Публичный договор аферта</a></li>
-          <li><a href='#'>Политика обработки персональных данных</a></li>
+          <li><a href='#'>Публичный договор оферта</a></li>
           <li><a href={CONTACTS_ROUTE}>Контакты</a></li>
         </ul>
         <ul>
             <h3>Наши соцсети</h3>
-            <li><a href='#'>ВКонтакте</a></li>
-            <li><a href='#'>YouTube</a></li>
-            <li><a href='#'>Boosty</a></li>
-            <li><a href='#'>Телеграм</a></li>
+            <li><a href='https://vk.com/batikcentr'>ВКонтакте</a></li>
+            <li><a href='https://www.youtube.com/@batikcentr'>YouTube</a></li>
+            <li><a href='https://boosty.to/batikcentr'>Boosty</a></li>
+            <li><a href='https://t.me/batikcentr'>Телеграм</a></li>
         </ul>
     </div>
   );
