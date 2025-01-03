@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { Context } from '../index';
-import { CATALOG_ROUTE, ABOUT_ROUTE, BASKET_ROUTE, BRANDS_ROUTE, CONTACTS_ROUTE, LOGIN_ROUTE, FAVOURITES_ROUTE, SHOP_ROUTE } from '../utilis/consts';
+import { PROFILE_ROUTE, CATALOG_ROUTE, ABOUT_ROUTE, BASKET_ROUTE, BRANDS_ROUTE, CONTACTS_ROUTE, LOGIN_ROUTE, FAVOURITES_ROUTE, SHOP_ROUTE } from '../utilis/consts';
 
 import SEARCH from '../img/search.jpg';
 import LOGO from '../img/batikcentr.svg';
@@ -23,7 +23,9 @@ const NavBar = () => {
             </form>
           <a className={styles.logo} href={SHOP_ROUTE}><img src={LOGO}></img></a>
           <a className={styles.icons_favourites} href={FAVOURITES_ROUTE}><img src={FAVOURITES}></img></a>
-          <a className={styles.icons_login} href={LOGIN_ROUTE}><img src={PROFILE}></img></a>
+          {user.isAuth ? <a className={styles.icons_login} href={PROFILE_ROUTE}><img src={PROFILE}></img></a> 
+          : 
+          <a className={styles.icons_login} href={LOGIN_ROUTE}><img src={PROFILE}></img></a>}
           <a className={styles.icons_basket} href={BASKET_ROUTE}><img src={BASKET}></img></a>
         </div>
         <div className={styles.navbar}>
