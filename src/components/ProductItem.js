@@ -1,11 +1,16 @@
 import React from 'react';
 import { Card } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
+
+import { PRODUCT_ROUTE } from '../utilis/consts';
+
 import BASKET from '../img/basket.svg';
 import FAVOURITES from '../img/favourites.svg'
 
 const ProductItem = ({product}) => {
+    const navigate = useNavigate();
     return (
-        <div style={{marginBottom: 83}}>
+        <div style={{marginBottom: 83}} onClick={() => navigate(PRODUCT_ROUTE + '/' + product.id)}>
             <Card style={{width: 342, cursor: 'pointer', border: 'none'}}>
                 <Card.Img variant="top" src={product.img}/>
                 <Card.Body>

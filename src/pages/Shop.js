@@ -1,5 +1,5 @@
 import React from 'react';
-import { Carousel } from 'react-bootstrap';
+import { Carousel, Button } from 'react-bootstrap';
 import Slider from "react-slick";
 
 // import IMAGE from '../img/placeholder.svg';
@@ -8,7 +8,10 @@ import IMAGE from '../img/black.jpg';
 import styles from '../styles/shop.module.css';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-
+import { ADMIN_ROUTE } from '../utilis/consts';
+import { useNavigate } from 'react-router-dom';
+import { useContext } from 'react';
+import { Context } from '../index';
 
 
 const Shop = () => {
@@ -19,6 +22,8 @@ const Shop = () => {
     slidesToShow: 3,
     slidesToScroll: 3,
   };
+const navigate = useNavigate()
+const {user} = useContext(Context)
   return (
     <div className={styles.shop}>
       <Carousel>
@@ -90,6 +95,7 @@ const Shop = () => {
         </div>
         <button className={styles.button}>смотреть ещё</button>
       </div>
+      {user.isAuth ? <Button variant={"outline-light"} onClick={() => navigate(ADMIN_ROUTE)}>Админ панель</Button> : <p></p>}
     </div>
   );
 }

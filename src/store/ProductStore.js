@@ -5,6 +5,9 @@ export default class ProductStore {
     constructor() {
         this._types = [ // Типы продукции
             {id: 1, name: 'Вязальные машины'},
+            {id: 2, name: 'Аксессуары'},
+            {id: 3, name: 'Мебель'},
+            {id: 4, name: 'Другое'},
             // Заполнить 
         ]
         this._brands = [ // Бренды
