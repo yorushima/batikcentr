@@ -1,127 +1,95 @@
-import React from 'react';
-import { useState } from "react";
-
+import React, { useState } from "react";
 import styles from '../styles/auth.module.css';
-
+import { registration } from '../components/http/userAPI';
 
 const Registration = () => {
-    // Поля для регистрации 
-    const [name, setName] = useState(""); 
-    // const [email, setEmail] = useState(""); 
-    const [password, setPassword] = useState(""); 
-  
-    // Поля для проверки ошибки 
-    const [submitted, setSubmitted] = useState(false); 
-    const [error, setError] = useState(false); 
-  
-    // Обработка изменения имени 
-    const handleName = (e) => { 
-        setName(e.target.value); 
-        setSubmitted(false); 
-    }; 
-  
-    // Обработка изменения почты 
-    // const handleEmail = (e) => { 
-    //     setEmail(e.target.value); 
-    //     setSubmitted(false); 
-    // }; 
-  
-    // Обработка изменения пароля
-    const handlePassword = (e) => { 
-        setPassword(e.target.value); 
-        setSubmitted(false); 
-    }; 
-  
-    // Обработка отправки формы 
-    const handleSubmit = (e) => { 
-        e.preventDefault(); 
-        if (name === "" || /*email === "" || */ password === "") { 
-            setError(true); 
-        } else { 
-            setSubmitted(true); 
-            setError(false); 
-        } 
-    }; 
-  
-    // Отображение сообщения об успешном завершении 
-    const successMessage = () => { 
-        return ( 
-            <div 
-                className={styles.success}
-                style={{ 
-                    display: submitted ? "" : "none", 
-                }} 
-            > 
-                <p>Пользователь {name} успешно зарегистрирован!</p> 
-            </div> 
-        ); 
-    }; 
-  
-    // Отображение сообщения об ошибке, если ошибка является истинной 
-    const errorMessage = () => { 
-        return ( 
-            <div 
-                className={styles.error}
-                style={{ 
-                    display: error ? "" : "none", 
-                }} 
-            > 
-                <p>Пожалуйста, заполните все поля</p> 
-            </div> 
-        ); 
-    }; 
-  
-    return ( 
-        <div className={styles.form}> 
-            <div> 
-                <h1>Регистрация</h1> 
-            </div> 
-  
-            {/* Вызов сообщений */} 
-            <div className={styles.messages}> 
-                {errorMessage()} 
-                {successMessage()} 
-            </div> 
-  
-            <form> 
-                <label className={styles.label}></label> 
-                <input 
-                    onChange={handleName} 
+    const [name, setName] = useState("");
+    const [password, setPassword] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState("");
+    const [submitted, setSubmitted] = useState(false);
+    const [error, setError] = useState("");
+    const [loading, setLoading] = useState(false);
+
+    const signIn = async () => {
+        if (password !== confirmPassword) {
+            setError("Пароли не совпадают");
+            return;
+        }
+        setError("");
+        setLoading(true);
+        try {
+            const response = await registration(name, password);
+            console.log(response);
+            setSubmitted(true);
+        } catch (err) {
+            setError(err.response?.data?.message || "Ошибка регистрации");
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        if (name === "" || password === "" || confirmPassword === "") {
+            setError("Пожалуйста, заполните все поля");
+            return;
+        }
+        signIn();
+    };
+
+    return (
+        <div className={styles.form}>
+            <div>
+                <h1>Регистрация</h1>
+            </div>
+
+            <div className={styles.messages}>
+                {error && <div className={styles.error}><p>{error}</p></div>}
+                {submitted && !error && (
+                    <div className={styles.success}>
+                        <p>Пользователь {name} успешно зарегистрирован!</p>
+                    </div>
+                )}
+            </div>
+
+            <form onSubmit={handleSubmit}>
+                <label className={styles.label}></label>
+                <input
+                    onChange={(e) => setName(e.target.value)}
                     className={styles.input}
-                    value={name} 
+                    value={name}
                     type="text"
-                    placeholder='Логин'
-                /> 
-  
-                {/* <label className={styles.label}></label> 
-                <input 
-                    onChange={handleEmail} 
+                    placeholder="Логин"
+                />
+
+                <label className={styles.label}></label>
+                <input
+                    onChange={(e) => setPassword(e.target.value)}
                     className={styles.input}
-                    value={email} 
-                    type="email"
-                    placeholder='Почта'
-                />  */}
-  
-                <label className={styles.label}></label> 
-                <input 
-                    onChange={handlePassword} 
-                    className={styles.input}
-                    value={password} 
+                    value={password}
                     type="password"
-                    placeholder='Пароль'
-                /> 
-                <label className={styles.label}></label> 
-                <input 
-                    onChange={handlePassword} 
+                    placeholder="Пароль"
+                />
+
+                <label className={styles.label}></label>
+                <input
+                    onChange={(e) => setConfirmPassword(e.target.value)}
                     className={styles.input}
-                    value={password} 
+                    value={confirmPassword}
                     type="password"
-                    placeholder='Повторите пароль'
-                /> 
-                <button onClick={handleSubmit} className={styles.button} type="submit"> Регистрация </button> 
-            </form> 
-        </div> 
+                    placeholder="Повторите пароль"
+                />
+
+                <button
+                    type="submit"
+                    className={styles.button}
+                    disabled={loading}
+                >
+                    {loading ? "Загрузка..." : "Регистрация"}
+                </button>
+            </form>
+        </div>
     );
-}
+};
 
 export default Registration;

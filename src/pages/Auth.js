@@ -1,113 +1,86 @@
-import React from 'react';
-import { useState } from "react";
-
+import React, { useState } from "react";
+import styles from "../styles/auth.module.css";
+import { login } from "../components/http/userAPI"; 
 import { REGISTRATION_ROUTE } from "../utilis/consts";
 
-import styles from '../styles/auth.module.css';
-
 const Auth = () => {
-    // Поля для регистрации 
-    const [name, setName] = useState(""); 
-    // const [email, setEmail] = useState(""); 
-    const [password, setPassword] = useState(""); 
-  
-    // Поля для проверки ошибки 
-    const [error, setError] = useState(false); 
-  
-    // Обработка изменения имени 
-    const handleName = (e) => { 
-        setName(e.target.value); 
-    }; 
-  
-    // Обработка изменения почты 
-    // const handleEmail = (e) => { 
-    //     setEmail(e.target.value); 
-    //     setSubmitted(false); 
-    // }; 
-  
-    // Обработка изменения пароля
-    const handlePassword = (e) => { 
-        setPassword(e.target.value); 
-    }; 
-  
-    // Обработка отправки формы 
-    const handleSubmit = (e) => { 
-        e.preventDefault(); 
-        if (name === "" || /*email === "" || */ password === "") { 
-            setError(true); 
-        } else { 
-            setError(false); 
-        } 
-    }; 
-  
-    // Отображение сообщения об ошибке, если ошибка является истинной 
-    const errorMessage = () => { 
-        return ( 
-            <div 
-                className={styles.error}
-                style={{ 
-                    display: error ? "" : "none", 
-                }} 
-            > 
-                <p>Пожалуйста, заполните все поля</p> 
-            </div>
-        ); 
-    }; 
+    const [name, setName] = useState("");
+    const [password, setPassword] = useState("");
+    const [error, setError] = useState("");
+    const [loading, setLoading] = useState(false);
 
-    return ( 
-        <div className={styles.form}> 
-            <div> 
-                <h1>Авторизация</h1> 
-            </div> 
-  
-            {/* Вызов сообщений */} 
-            <div className={styles.messages}> 
-                {errorMessage()} 
-                {/* {successMessage()}  */}
-            </div> 
-  
-            <form> 
-                <label className={styles.label}></label> 
-                <input 
-                    onChange={handleName} 
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        if (name === "" || password === "") {
+            setError("Пожалуйста, заполните все поля");
+            return;
+        }
+        setError("");
+        setLoading(true);
+        try {
+            const response = await login(name, password);
+            console.log(response); // Можно заменить на редирект или другие действия
+        } catch (err) {
+            setError(err.response?.data?.message || "Ошибка авторизации");
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    return (
+        <div className={styles.form}>
+            <div>
+                <h1>Авторизация</h1>
+            </div>
+
+            {/* Сообщения об ошибке */}
+            <div className={styles.messages}>
+                {error && (
+                    <div className={styles.error}>
+                        <p>{error}</p>
+                    </div>
+                )}
+            </div>
+
+            <form onSubmit={handleSubmit}>
+                <label className={styles.label}></label>
+                <input
+                    onChange={(e) => setName(e.target.value)}
                     className={styles.input}
-                    value={name} 
+                    value={name}
                     type="text"
-                    placeholder='Логин'
-                /> 
-  
-                {/* <label className={styles.label}></label> 
-                <input 
-                    onChange={handleEmail} 
+                    placeholder="Логин"
+                />
+
+                <label className={styles.label}></label>
+                <input
+                    onChange={(e) => setPassword(e.target.value)}
                     className={styles.input}
-                    value={email} 
-                    type="email"
-                    placeholder='Почта'
-                />  */}
-  
-                <label className={styles.label}></label> 
-                <input 
-                    onChange={handlePassword} 
-                    className={styles.input}
-                    value={password} 
+                    value={password}
                     type="password"
-                    placeholder='Пароль'
-                /> 
+                    placeholder="Пароль"
+                />
 
                 <label className={styles.label}>
                     <input type="checkbox" />
-                    <span class={styles.checkmark}></span>
-                    Запомните меня
+                    <span className={styles.checkmark}></span>
+                    Запомнить меня
                 </label>
-                <a>Забыли пароль?</a>
+                <a href="#">Забыли пароль?</a>
 
-                <button onClick={handleSubmit} className={styles.button} type="submit"> 
-                    Вход 
-                </button> 
-                <p>Нет аккаунта? <a href={REGISTRATION_ROUTE}>Регистрация</a></p>
-            </form> 
-        </div> 
+                <button
+                    type="submit"
+                    className={styles.button}
+                    disabled={loading}
+                >
+                    {loading ? "Загрузка..." : "Вход"}
+                </button>
+                <p>
+                    Нет аккаунта? <a href={REGISTRATION_ROUTE}>Регистрация</a>
+                </p>
+            </form>
+        </div>
     );
-}
+};
 
 export default Auth;
