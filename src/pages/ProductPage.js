@@ -10,11 +10,6 @@ const ProductPage = () => {
                  price: '1.000.000', 
                  img: ID3, 
                  description: 'Однофонтурная ручная вязальная машина 4-го класса', 
-                 type: 'Вязальная машина', 
-                 class: '4',
-                 brand: 'Silver Reed',
-                 count_needles: '150',
-                 distance_needle: '6,5 мм',
                  };
   const description = [
     {id: 1, title: 'Тип', description: 'Вязальная машина'},
