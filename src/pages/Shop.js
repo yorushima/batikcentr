@@ -26,6 +26,7 @@ const navigate = useNavigate()
 const {user} = useContext(Context)
   return (
     <div className={styles.shop}>
+         {user.isAuth ? <Button variant={"outline-light"} onClick={() => navigate(ADMIN_ROUTE)}>Админ панель</Button> : <p></p>}
       <Carousel>
         <Carousel.Item>
         <img className={styles.images} src={IMAGE} alt="First slide" />
@@ -95,7 +96,7 @@ const {user} = useContext(Context)
         </div>
         <button className={styles.button}>смотреть ещё</button>
       </div>
-      {user.isAuth ? <Button variant={"outline-light"} onClick={() => navigate(ADMIN_ROUTE)}>Админ панель</Button> : <p></p>}
+   
     </div>
   );
 }
